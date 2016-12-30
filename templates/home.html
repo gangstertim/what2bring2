@@ -1,0 +1,171 @@
+<!DOCTYPE html5>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>What2Bring</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A potluck party-planning app">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous"
+  >
+
+  <style type="text/css">
+    .jumbotron {
+      background-color:#33BBFF;
+    }
+
+    .form-horizontal .form-group{
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .btn.fullwidth {
+      width: 100%;
+      margin-top: 44px;
+    }
+
+    .strikethrough {
+      text-decoration: line-through;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">What2Bring</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="#">New Event</a>
+        </li>
+        <li>
+          <a href="about">About</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+  <div class="container">
+
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <h1>What2Bring</h1>
+      <p>You already know when it's happenening.  Now, it's only a question of who's coming and what they're bringing.</p>
+      <h3>Let's get started:</h3>
+      <form class="form">
+        <input class="form-control" class="col-md-2" type="string" placeholder="Name Your Event">
+      </form>
+    </div>
+
+    <div class="col-md-4">
+      <h2>Where & When?</h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="inputDate">Event Date</label>
+          <input class="form-control" class="form-control" type="date" id="inputDate" placeholder="Date">
+        </div>
+
+        <div class="form-group">
+          <label for="inputTime">Event Time</label>
+          <input class="form-control" type="string" id="inputTime" placeholder="Time">
+        </div>
+
+        <div class="form-group">
+          <label for="inputLocation">Event Location</label>
+          <input class="form-control" type="string" id="inputLocation" placeholder="Location">
+        </div>
+
+        <div class="form-group">
+          <label for="inputDescription">Event Description (optional)</label>
+          <input class="form-control" type="text" id="inputDescription" placeholder="Description">
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-4">
+      <h2>Who?</h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="inputName">Who Are You?</label>
+          <input class="form-control" type="string" id="inputName" placeholder="Name">
+        </div>
+
+        <div class="form-group">
+          <label for="inputUserEmail">Your Email (optional):</label>
+          <input class="form-control" type="email" id="inputEmail" placeholder="Email">
+        </div>
+
+        <div class="form-group">
+          <label for="inputGuests">How many guests can you host?</label>
+          <input class="form-control" type="number" id="inputGuests" placeholder="">
+        </div>
+
+        <div class="form-group">
+          <label for="inputGuestEmails">Guest Emails (optional):</label>
+          <input class="form-control" type="text" id="inputGuestEmails" placeholder="Emails">
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-4">
+      <h2>What?</h2>
+      <form class="form-horizontal">
+
+        <div class="form-group">
+          <label for="inputToBring">What should guests bring?  Separate dishes with commas.</label>
+          <input class="form-control" type="text" id="inputToBring" placeholder="What to bring?">
+        </div>
+
+        <div class="form-group">
+          <label for="inputCash">Can guests pay with cash?</label>
+          <input class="form-control" type="checkbox" id="inputCash">
+        </div>
+
+        <div class="form-group">
+          <label for="inputCashAmount">How Much?</label>
+          <input class="form-control" type="number" id="inputCashAmount">
+        </div>
+      </form>
+    </div>
+
+    <p>
+      <button class="btn fullwidth btn-primary" type="button">Let's Do it!</button>
+    </p>
+
+
+    <hr>
+
+    <footer>
+      <p>&copy; Miller & Schaffer <span class="strikethrough"> 2012</span> 2016</p>
+    </footer>
+
+  </div>
+
+  <!--<script src="static/js/jquery.js"></script>
+  <script src="static/js/bootstrap-transition.js"></script>
+  <script src="static/js/bootstrap-alert.js"></script>
+  <script src="static/js/bootstrap-modal.js"></script>
+  <script src="static/js/bootstrap-dropdown.js"></script>
+  <script src="static/js/bootstrap-scrollspy.js"></script>
+  <script src="static/js/bootstrap-tab.js"></script>
+  <script src="static/js/bootstrap-tooltip.js"></script>
+  <script src="static/js/bootstrap-popover.js"></script>
+  <script src="static/js/bootstrap-button.js"></script>
+  <script src="static/js/bootstrap-collapse.js"></script>
+  <script src="static/js/bootstrap-carousel.js"></script>
+  <script src="static/js/bootstrap-typeahead.js"></script>-->
+
+</body>
+</html>
