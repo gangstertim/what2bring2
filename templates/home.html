@@ -14,8 +14,16 @@
   >
 
   <style type="text/css">
-    .jumbotron {
+    .container {
+      max-width: 1000px;
+    }
+
+    .jumbotron, .modal-header {
       background-color:#33BBFF;
+    }
+
+    label {
+      font-weight: 200;
     }
 
     .form-horizontal .form-group{
@@ -30,6 +38,10 @@
 
     .strikethrough {
       text-decoration: line-through;
+    }
+
+    .nav a {
+      cursor: pointer;
     }
 
   </style>
@@ -49,7 +61,7 @@
           <a href="#">New Event</a>
         </li>
         <li>
-          <a href="about">About</a>
+          <a data-toggle="modal" data-target="#myModal">About</a>
         </li>
       </ul>
 
@@ -65,7 +77,7 @@
       <p>You already know when it's happenening.  Now, it's only a question of who's coming and what they're bringing.</p>
       <h3>Let's get started:</h3>
       <form class="form">
-        <input class="form-control" class="col-md-2" type="string" placeholder="Name Your Event">
+        <input class="form-control" type="string" id="inputEventName" placeholder="Name Your Event">
       </form>
     </div>
 
@@ -129,8 +141,8 @@
         </div>
 
         <div class="form-group">
+          <input type="checkbox" id="inputCash">
           <label for="inputCash">Can guests pay with cash?</label>
-          <input class="form-control" type="checkbox" id="inputCash">
         </div>
 
         <div class="form-group">
@@ -141,7 +153,7 @@
     </div>
 
     <p>
-      <button class="btn fullwidth btn-primary" type="button">Let's Do it!</button>
+      <button class="btn fullwidth btn-primary" type="button" onclick="onSubmit()">Let's Do it!</button>
     </p>
 
 
@@ -153,19 +165,39 @@
 
   </div>
 
-  <!--<script src="static/js/jquery.js"></script>
-  <script src="static/js/bootstrap-transition.js"></script>
-  <script src="static/js/bootstrap-alert.js"></script>
-  <script src="static/js/bootstrap-modal.js"></script>
-  <script src="static/js/bootstrap-dropdown.js"></script>
-  <script src="static/js/bootstrap-scrollspy.js"></script>
-  <script src="static/js/bootstrap-tab.js"></script>
-  <script src="static/js/bootstrap-tooltip.js"></script>
-  <script src="static/js/bootstrap-popover.js"></script>
-  <script src="static/js/bootstrap-button.js"></script>
-  <script src="static/js/bootstrap-collapse.js"></script>
-  <script src="static/js/bootstrap-carousel.js"></script>
-  <script src="static/js/bootstrap-typeahead.js"></script>-->
+  <!-- About Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">What is What2Bring?</h4>
+        </div>
+        <div class="modal-body">
+          <p><strong>What2Bring makes event planning easy.</strong></p>
 
+          <p>Suppose you're Alice, and you want to plan a tea party. Your table is only big enough for three guests, but you want to invite everyone in Wonderland. Also, you need somebody to bring crumpets, somebody to bring cake, and somebody to bring the tea!</p>
+
+
+          <p>Fortunately, Alice has What2Bring. She creates an event and sends the link to all her friends in Wonderland. Now, nobody feels left out. When it's teatime, Alice knows who's coming and what they're bringing–and not everybody is bringing crumpets.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery, minified -->
+  <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous">
+</script>
+  <!-- Bootstrap JS, minified -->
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous">
+  </script>
+  <!-- Custom JS -->
+  <script src="static/js/home.js"></script>
 </body>
 </html>
