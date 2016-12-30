@@ -23,6 +23,11 @@ def init_db():
         db.cursor().executescript(f.read())
     db.commit()
 
+@app.before_request #This is kind of hacky
+def before_request():
+    print('doing something!')
+    g.DATABASE_CONFIG = app.config['DATABASE'];
+ 
 @app.cli.command('initdb')
 def initdb_command():
     g.DATABASE_CONFIG = app.config['DATABASE'];
