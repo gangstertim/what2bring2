@@ -1,0 +1,3 @@
+graft what2bring/templates
+graft what2bring/static
+include what2bring/schema.sql

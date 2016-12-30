@@ -1,0 +1,12 @@
+MANIFEST.in
+what2bring/__init__.py
+what2bring/schema.sql
+what2bring/what2bring.py
+what2bring.egg-info/PKG-INFO
+what2bring.egg-info/SOURCES.txt
+what2bring.egg-info/dependency_links.txt
+what2bring.egg-info/requires.txt
+what2bring.egg-info/top_level.txt
+what2bring/static/js/home.js
+what2bring/templates/event.html
+what2bring/templates/home.html
