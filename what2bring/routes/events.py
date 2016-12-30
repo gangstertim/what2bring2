@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request, url_for
+from flask import render_template, redirect, request, url_for, flash
 from ..helpers import get_db
 from . import routes
 
@@ -9,7 +9,23 @@ def create_guest(event_no):
 
 @routes.route('/events/<int:event_no>')
 def show_event(event_no):
-    return render_template('event.html', event_no=event_no)
+    db = get_db()
+    q = db.execute("""select
+        eventName,
+        eventLocation,
+        eventDescription,
+        eventDatetime,
+        hostName,
+        dishesToBring,
+        acceptCash,
+        cashAmount
+    from events where id = ?""", [event_no])
+    event = q.fetchone()
+
+    if (event is None):
+        return "event not found!" #TODO clean this up    
+    
+    return render_template('event.html', event=event)
 
 @routes.route('/events', methods=['POST', 'GET'])
 def handle_event():
@@ -20,7 +36,8 @@ def handle_event():
         return show_events(db)
 
 def show_events(db):
-    cur = db.execute("""select 
+    q = db.execute("""select 
+        id,
         eventName, 
         eventLocation,
         eventDescription,
@@ -31,14 +48,13 @@ def show_events(db):
         acceptCash,
         cashAmount
     from events order by id desc""")
-    events = cur.fetchall()
+    events = q.fetchall()
     return render_template('events.html', events=events)
 
 
 def create_event(db, form):
     eventDatetime = 0 #TODO convert event date & time into epoch datetime
     acceptCash = 1 if form['acceptCash'] else 0
-
     db.execute("""insert into events (
         eventName, 
         eventLocation,
@@ -48,8 +64,10 @@ def create_event(db, form):
         hostEmail,
         dishesToBring,
         acceptCash,
-        cashAmount
-    ) values (?, ?, ?, ?, ?, ?, ?, ?, ?)""", [
+        cashAmount,
+        created_at,
+        updated_at
+    ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", [
         form['eventName'], 
         form['eventLocation'],
         form['eventDescription'],
@@ -58,9 +76,11 @@ def create_event(db, form):
         form['hostEmail'],
         form['dishesToBring'],
         acceptCash,
-        form['cashAmount']
+        form['cashAmount'],
+        "DATETIME('now')",
+        "DATETIME('now')"
     ])
     db.commit()
     flash('New entry was successfully posted')
-    return redirect(url_for('show_event', event_no=100)) #TODO get autoincremented event number
+    return redirect(url_for('routes.show_event', event_no=1)) #TODO get autoincremented event number
 
