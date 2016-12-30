@@ -1,29 +1,30 @@
 function onSubmit() {
   var formData = {};
   var errors = [];
-  var fields = ['inputEventName', 'inputDate', 'inputTime', 
-    'inputLocation', 'inputDescription', 'inputName', 
-    'inputUserEmail', 'inputGuests', 'inputGuestEmails',
-    'inputToBring', 'inputCash', 'inputCashAmount'
+  var fields = ['eventName', 'eventDate', 'eventTime', 
+    'eventLocation', 'eventDescription', 'hostName', 
+    'hostEmail', 'guestNames', 'guestEmails',
+    'dishesToBring', 'acceptCash', 'cashAmount'
   ];
 
   fields.forEach(function(field) {
-    var data = $(field).val();
+    var data = $('#' + field).val();
     var error = validateField[field] && validateField[field](data);
     if (error) errors.push({field: field, error: error});
-    formData[field] = data;
+    if (data) formData[field] = data;
   });
 
   //if (errors.length) {
   //  console.log(errors);
   //} else {
-    $.post("events", formData);
+    console.log(formData);
+    $.post('events', formData);
   //}
 }
 
 var validateField = {
-  inputName: isRequired,
-  inputEventName: isRequired
+  hostName: isRequired,
+  eventName: isRequired
 };
 
 function isRequired(data) {

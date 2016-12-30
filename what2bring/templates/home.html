@@ -77,7 +77,7 @@
       <p>You already know when it's happenening.  Now, it's only a question of who's coming and what they're bringing.</p>
       <h3>Let's get started:</h3>
       <form class="form">
-        <input class="form-control" type="string" id="inputEventName" placeholder="Name Your Event">
+        <input class="form-control" type="string" id="eventName" placeholder="Name Your Event">
       </form>
     </div>
 
@@ -85,23 +85,23 @@
       <h2>Where & When?</h2>
       <form class="form-horizontal">
         <div class="form-group">
-          <label for="inputDate">Event Date</label>
-          <input class="form-control" class="form-control" type="date" id="inputDate" placeholder="Date">
+          <label for="eventDate">Event Date</label>
+          <input class="form-control" class="form-control" type="date" id="eventDate" placeholder="Date">
         </div>
 
         <div class="form-group">
-          <label for="inputTime">Event Time</label>
-          <input class="form-control" type="string" id="inputTime" placeholder="Time">
+          <label for="eventTime">Event Time</label>
+          <input class="form-control" type="string" id="eventTime" placeholder="Time">
         </div>
 
         <div class="form-group">
-          <label for="inputLocation">Event Location</label>
-          <input class="form-control" type="string" id="inputLocation" placeholder="Location">
+          <label for="eventLocation">Event Location</label>
+          <input class="form-control" type="string" id="eventLocation" placeholder="Location">
         </div>
 
         <div class="form-group">
-          <label for="inputDescription">Event Description (optional)</label>
-          <input class="form-control" type="text" id="inputDescription" placeholder="Description">
+          <label for="eventDescription">Event Description (optional)</label>
+          <input class="form-control" type="text" id="eventDescription" placeholder="Description">
         </div>
       </form>
     </div>
@@ -110,23 +110,23 @@
       <h2>Who?</h2>
       <form class="form-horizontal">
         <div class="form-group">
-          <label for="inputName">Who Are You?</label>
-          <input class="form-control" type="string" id="inputName" placeholder="Name">
+          <label for="hostName">Who Are You?</label>
+          <input class="form-control" type="string" id="hostName" placeholder="Name">
         </div>
 
         <div class="form-group">
-          <label for="inputUserEmail">Your Email (optional):</label>
-          <input class="form-control" type="email" id="inputEmail" placeholder="Email">
+          <label for="hostEmail">Your Email (optional):</label>
+          <input class="form-control" type="email" id="hostEmail" placeholder="Email">
         </div>
 
         <div class="form-group">
-          <label for="inputGuests">How many guests can you host?</label>
-          <input class="form-control" type="number" id="inputGuests" placeholder="">
+          <label for="guestNames">How many guests can you host?</label>
+          <input class="form-control" type="number" id="guestNames" placeholder="">
         </div>
 
         <div class="form-group">
-          <label for="inputGuestEmails">Guest Emails (optional):</label>
-          <input class="form-control" type="text" id="inputGuestEmails" placeholder="Emails">
+          <label for="guestEmails">Guest Emails (optional):</label>
+          <input class="form-control" type="text" id="guestEmails" placeholder="Emails">
         </div>
       </form>
     </div>
@@ -136,18 +136,18 @@
       <form class="form-horizontal">
 
         <div class="form-group">
-          <label for="inputToBring">What should guests bring?  Separate dishes with commas.</label>
-          <input class="form-control" type="text" id="inputToBring" placeholder="What to bring?">
+          <label for="dishesToBring">What should guests bring?  Separate dishes with commas.</label>
+          <input class="form-control" type="text" id="dishesToBring" placeholder="What to bring?">
         </div>
 
         <div class="form-group">
-          <input type="checkbox" id="inputCash">
-          <label for="inputCash">Can guests pay with cash?</label>
+          <input type="checkbox" id="acceptCash">
+          <label for="acceptCash">Can guests pay with cash?</label>
         </div>
 
         <div class="form-group">
-          <label for="inputCashAmount">How Much?</label>
-          <input class="form-control" type="number" id="inputCashAmount">
+          <label for="cashAmount">How Much?</label>
+          <input class="form-control" type="number" id="cashAmount">
         </div>
       </form>
     </div>
@@ -201,3 +201,4 @@
   <script src="static/js/home.js"></script>
 </body>
 </html>
+

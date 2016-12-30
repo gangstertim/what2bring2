@@ -1,0 +1,9 @@
+{% block body %}
+  <ul class=events>
+  {% for event in events %}
+    <li><h2>{{ event.eventName }}</h2>{{ event.hostName|safe }}
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}
