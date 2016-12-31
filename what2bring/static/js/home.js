@@ -11,13 +11,12 @@ function onSubmit() {
     var data = $('#' + field).val();
     var error = validateField[field] && validateField[field](data);
     if (error) errors.push({field: field, error: error});
-    if (data) formData[field] = data;
+    formData[field] = data;
   });
 
   //if (errors.length) {
   //  console.log(errors);
   //} else {
-    console.log(formData);
     $.post('events', formData);
   //}
 }

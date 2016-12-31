@@ -4,62 +4,57 @@ from . import routes
 
 @routes.route('/events/<int:event_no>/guest', methods=['POST'])
 def create_guest(event_no):
-    #TODO
-    return
-
-@routes.route('/events/<int:event_no>')
-def show_event(event_no):
     db = get_db()
-    q = db.execute("""select
-        eventName,
-        eventLocation,
-        eventDescription,
-        eventDatetime,
-        hostName,
-        dishesToBring,
-        acceptCash,
-        cashAmount
-    from events where id = ?""", [event_no])
-    event = q.fetchone()
+    db.execute("""insert into guests (
+        name,
+        email,
+        dishes,
+        bringing_cash,
+        event_id
+    ) values (?, ?, ?, ?, ?)""", [
+        request.form['name'],
+        request.form['email'],
+        request.form['dishes'],
+        request.form['bringing_cash'],
+        request.form['event_id']
+    ])
+    #TODO also need to update events DB with dishes
+    return True #TODO idk
+
+@routes.route('/events/<int:id>')
+def show_event(id):
+    db = get_db()
+    event = get_event_by_id(id)
+    guests = get_guests_by_event_id(id)
 
     if (event is None):
         return "event not found!" #TODO clean this up    
     
-    return render_template('event.html', event=event)
+    return render_template('event.html', event=event, guests=guests)
 
 @routes.route('/events', methods=['POST', 'GET'])
 def handle_event():
-    db = get_db()
     if request.method == 'POST':
-        return create_event(db, request.form)
+        return create_event(request.form)
     elif request.method == 'GET':
-        return show_events(db)
+        return show_events()
 
-def show_events(db):
-    q = db.execute("""select 
-        id,
-        eventName, 
-        eventLocation,
-        eventDescription,
-        eventDatetime,
-        hostName,
-        hostEmail,
-        dishesToBring,
-        acceptCash,
-        cashAmount
-    from events order by id desc""")
+def show_events():
+    db = get_db()
+    q = db.execute("""select * from events order by id desc""")
     events = q.fetchall()
     return render_template('events.html', events=events)
 
 
-def create_event(db, form):
+def create_event(form):
+    db = get_db()
     eventDatetime = 0 #TODO convert event date & time into epoch datetime
     acceptCash = 1 if form['acceptCash'] else 0
     db.execute("""insert into events (
-        eventName, 
-        eventLocation,
-        eventDescription,
-        eventDatetime,
+        name, 
+        location,
+        description,
+        datetime,
         hostName,
         hostEmail,
         dishesToBring,
@@ -82,5 +77,14 @@ def create_event(db, form):
     ])
     db.commit()
     flash('New entry was successfully posted')
-    return redirect(url_for('routes.show_event', event_no=1)) #TODO get autoincremented event number
+    return redirect(url_for('routes.show_event', id=1)) #TODO get autoincremented event number
 
+def get_event_by_id(id):
+    db = get_db()
+    q = db.execute("""select * from events where id = ?""", [id])
+    return q.fetchone()
+
+def get_guests_by_event_id(id):
+    db = get_db()
+    q = db.execute("""select * from guests where event_id = ?""", [id])
+    return q.fetchall()

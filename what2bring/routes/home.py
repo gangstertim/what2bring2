@@ -2,7 +2,7 @@ from flask import render_template
 from . import routes
 
 @routes.route('/')
-def hello_world():
+def show_home():
     return render_template('home.html')
 
 @routes.route('/about')

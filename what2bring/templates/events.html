@@ -1,9 +1,26 @@
+{% extends "main.html" %}
+
+{% block hero %}
+  <h1>Events</h1>
+{% endblock %}
+
 {% block body %}
-  <ul class=events>
-  {% for event in events %}
-    <li><h2>{{ event.eventName }}</h2>{{ event.hostName|safe }}
-  {% else %}
-    <li><em>Unbelievable.  No entries here so far</em>
-  {% endfor %}
-  </ul>
+  <table class="table table-striped"
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Datetime</th>
+      <th>hostName</th>
+    </tr>
+    {% for event in events %}
+      <tr>
+        <td>{{ event.id }}</td>
+        <td>{{ event.name }}</td>
+        <td>{{ event.location }}</td>
+        <td>{{ event.datetime }}</td>
+        <td>{{ event.hostName }}</td>
+      </tr>
+    {% endfor %}
+  </table>
 {% endblock %}

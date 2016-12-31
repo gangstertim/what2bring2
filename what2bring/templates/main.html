@@ -1,0 +1,155 @@
+<!DOCTYPE html5>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>What2Bring</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A potluck party-planning app">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous"
+  >
+
+  <style type="text/css">
+    .container {
+      max-width: 1000px;
+    }
+
+    .jumbotron, .modal-header {
+      background-color:#33BBFF;
+    }
+
+    label {
+      font-weight: 200;
+    }
+
+    .form-horizontal .form-group{
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .btn.fullwidth {
+      width: 100%;
+      margin-top: 44px;
+    }
+
+    .strikethrough {
+      text-decoration: line-through;
+    }
+
+    .nav a {
+      cursor: pointer;
+    }
+
+    .hero-container {
+      width: 50%;
+      display: inline-block;
+    }
+
+    .hero-container p {
+      font-size: 18px;
+      font-weight: 200;
+      line-height: 30px;
+      color: inherit;
+    }
+
+    .hero-container h1 {
+      margin-bottom: 0;
+      font-size: 60px;
+      line-height: 1;
+      letter-spacing: -1px;
+      color: inherit;
+    }
+
+    .hero-container h2 {
+      font-size: 24px;
+      color: #FFFFFF;
+    }
+
+    .picture {
+      width: 45%;
+      display: inline-block;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">What2Bring</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="#">New Event</a>
+        </li>
+        <li>
+          <a data-toggle="modal" data-target="#myModal">About</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+  <div class="container">
+
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      {% block hero %}{% endblock %}
+    </div>
+
+    {% block body %}{% endblock %}
+    <hr>
+
+    <footer>
+      <p>&copy; Miller & Schaffer <span class="strikethrough"> 2012</span> 2016</p>
+    </footer>
+
+  </div>
+
+  <!-- About Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">What is What2Bring?</h4>
+        </div>
+        <div class="modal-body">
+          <p><strong>What2Bring makes event planning easy.</strong></p>
+
+          <p>Suppose you're Alice, and you want to plan a tea party. Your table is only big enough for three guests, but you want to invite everyone in Wonderland. Also, you need somebody to bring crumpets, somebody to bring cake, and somebody to bring the tea!</p>
+
+
+          <p>Fortunately, Alice has What2Bring. She creates an event and sends the link to all her friends in Wonderland. Now, nobody feels left out. When it's teatime, Alice knows who's coming and what they're bringing–and not everybody is bringing crumpets.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery, minified -->
+  <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap JS, minified -->
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- Custom JS -->
+  <script src="/static/js/home.js"></script>
+</body>
+</html>
+

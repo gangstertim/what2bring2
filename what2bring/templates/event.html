@@ -1,1 +1,140 @@
-The event number is {{ event_no }}
+{% extends "main.html" %}
+{% block hero %}
+  <div class="hero-container">
+    <p>{{ event.hostName }} is having a</p>
+    <h1>{{ event.name }}!!!</h1>
+    <h2>Can you make it?</h2>
+  </div>
+  <div class="picture">
+    <img src="/static/img/funevent.png" alt="it's gonna be awesome!">
+  </div>
+{% endblock %}
+
+{% block body %}
+  <div class="row">
+    <div class="col-md-4">
+      <a class="pull-left">
+        <embed src="/static/img/where.svg"
+          width="63"
+          height="63"
+          type="image/svg+xml"
+        />
+      </a>
+      <div class="well">
+        <h4 class="media-heading">Where?</h4>
+        {{ event.location }}
+      </div>
+
+      <a class="pull-left">
+        <embed src="/static/img/when.svg"
+          width="57"
+          height="57"
+          type="image/svg+xml"
+        />
+      </a>
+      <div class="well">
+        <h4 class="media-heading">When?</h4>
+        {{ event.date }} at {{ event.time }}
+      </div>
+
+      {% if eventDescription %}
+
+        <a class="pull-left">
+          <embed src="/static/img/question.svg"
+            width="65"
+            height="65"
+            class='svg_pic'
+          />
+        </a>
+
+        <div class="well">
+          <h4 class="media-heading">What?</h4><br>
+          <span id="description">{{ event.description }}</span>
+        </div>
+
+      {% endif %}
+
+      <div class='bottle_div'>
+        <a class="pull-left">
+          <embed
+            src="/static/img/wine.svg"
+            width="75"
+            height="80"
+            type="image/svg+xml"class='svg_pic'
+          />
+        </a>
+
+        <div class="well">
+          <h4 class="media-heading">I can bring...</h4>
+          <span id="dishes_for_seeing"></span>
+        </div>
+      </div>
+
+      <p id="dishes_for_listing">
+        {{ event.dishesToBring }}
+      </p>
+
+      {% if acceptCash %}
+
+        <a class="pull-left">
+          <embed
+            src="/static/img/money.svg"
+            width="65"
+            height="60"
+            type="image/svg+xml"
+            class='svg_pic'
+          />
+        </a>
+
+        <div class="well">
+          <h4 class="media-heading" >How much? <small>(Suggested)</small></h4>
+          {{ event.cashAmount }}
+        </div>
+
+      {% endif %}
+    </div>
+
+    <div class="col-md-4">
+      <a class="pull-left">
+        <embed
+          src="/static/img/man.svg"
+          width="55"
+          height="60"
+          type="image/svg+xml"
+          class='svg_pic'
+        />
+      </a>
+
+      <div id="guests_coming">
+        <h4> Attendees: </h4>
+      </div>
+
+      <div>
+        <a id="add_guest">Get me on this list!</a>
+      </div>
+      <div id="attendees"></div>
+
+      <p id="attending_names">
+        {{ event.guests_names }}
+      </p>
+
+      <p id="number_of_attendees">
+        {{ event.numGuests }}
+
+      </p>
+
+      <p id="attending_with_cash">
+        {{ event.guests_cash }}
+
+      </p>
+
+      <p id="attending_dishes">
+        {{ event.guests_dishes }}
+      </p>
+    </div>
+
+    <div class="col-md-4">
+      <p id='rsvp'></p>
+    </div>
+  </div>
+{% endblock %}
