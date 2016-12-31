@@ -1,4 +1,49 @@
 {% extends "main.html" %}
+
+{% block styles %}
+  .hero-container {
+    width: 50%;
+    display: inline-block;
+  }
+
+  .hero-container p {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    color: inherit;
+  }
+
+  .hero-container h1 {
+    margin-bottom: 0;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+    color: inherit;
+  }
+
+  .hero-container h2 {
+    font-size: 24px;
+    color: #FFFFFF;
+  }
+
+  .picture {
+    width: 45%;
+    display: inline-block;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .pull-left {
+    margin: auto;
+    padding-top: 12px;
+    padding-left: 6px;
+    padding-right: 6px;
+    display: block;
+  }
+{% endblock %}
+
 {% block hero %}
   <div class="hero-container">
     <p>{{ event.hostName }} is having a</p>
@@ -137,4 +182,7 @@
       <p id='rsvp'></p>
     </div>
   </div>
+{% endblock %}
+
+{% block scripts %}
 {% endblock %}

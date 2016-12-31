@@ -22,20 +22,6 @@
       background-color:#33BBFF;
     }
 
-    label {
-      font-weight: 200;
-    }
-
-    .form-horizontal .form-group{
-      margin-left: 0;
-      margin-right: 0;
-    }
-
-    .btn.fullwidth {
-      width: 100%;
-      margin-top: 44px;
-    }
-
     .strikethrough {
       text-decoration: line-through;
     }
@@ -44,39 +30,7 @@
       cursor: pointer;
     }
 
-    .hero-container {
-      width: 50%;
-      display: inline-block;
-    }
-
-    .hero-container p {
-      font-size: 18px;
-      font-weight: 200;
-      line-height: 30px;
-      color: inherit;
-    }
-
-    .hero-container h1 {
-      margin-bottom: 0;
-      font-size: 60px;
-      line-height: 1;
-      letter-spacing: -1px;
-      color: inherit;
-    }
-
-    .hero-container h2 {
-      font-size: 24px;
-      color: #FFFFFF;
-    }
-
-    .picture {
-      width: 45%;
-      display: inline-block;
-    }
-
-    img {
-      max-width: 100%;
-    }
+    {% block styles %}{% endblock %}
   </style>
 </head>
 
@@ -149,7 +103,7 @@
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
   <!-- Custom JS -->
-  <script src="/static/js/home.js"></script>
+  {% block scripts %}{% endblock %}
 </body>
 </html>
 

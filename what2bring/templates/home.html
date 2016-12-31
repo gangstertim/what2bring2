@@ -1,5 +1,21 @@
 {% extends "main.html" %}
 
+{% block styles %}
+  label {
+    font-weight: 200;
+  }
+
+  .form-horizontal .form-group{
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .btn.fullwidth {
+    width: 100%;
+    margin-top: 44px;
+  }
+{% endblock %}
+
 {% block hero %}
   <h1>What2Bring</h1>
   <p>You already know when it's happenening.  Now, it's only a question of who's coming and what they're bringing.</p>
@@ -84,4 +100,8 @@
   <p>
     <button class="btn fullwidth btn-primary" type="button" onclick="onSubmit()">Let's Do it!</button>
   </p>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/static/js/home.js"></script>
 {% endblock %}
