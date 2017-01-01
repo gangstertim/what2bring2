@@ -26,11 +26,18 @@ def show_event(id):
     db = get_db()
     event = get_event_by_id(id)
     guests = get_guests_by_event_id(id)
+    dishesIndex = event.keys().index('dishesToBring')
+    dishesToBring = event[dishesIndex].split(',')
 
     if (event is None):
         return "event not found!" #TODO clean this up    
     
-    return render_template('event.html', event=event, guests=guests)
+    return render_template('event.html', 
+        event=event,
+        dishesToBring=dishesToBring, 
+        guests=guests, 
+        num_guests=len(guests)
+    )
 
 @routes.route('/events', methods=['POST', 'GET'])
 def handle_event():

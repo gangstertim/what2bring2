@@ -36,12 +36,9 @@
   }
 
   .pull-left {
-    margin: auto;
-    padding-top: 12px;
-    padding-left: 6px;
-    padding-right: 6px;
-    display: block;
+    padding: 12px;
   }
+
 {% endblock %}
 
 {% block hero %}
@@ -58,17 +55,21 @@
 {% block body %}
   <div class="row">
     <div class="col-md-4">
-      <a class="pull-left">
-        <embed src="/static/img/where.svg"
-          width="63"
-          height="63"
-          type="image/svg+xml"
-        />
-      </a>
-      <div class="well">
-        <h4 class="media-heading">Where?</h4>
-        {{ event.location }}
-      </div>
+
+      {% if event.location %}
+        <a class="pull-left">
+          <embed src="/static/img/where.svg"
+            width="63"
+            height="63"
+            type="image/svg+xml"
+          />
+        </a>
+
+        <div class="well">
+          <h4 class="media-heading">Where?</h4>
+          {{ event.location }}
+        </div>
+      {% endif %}
 
       <a class="pull-left">
         <embed src="/static/img/when.svg"
@@ -82,10 +83,9 @@
         {{ event.date }} at {{ event.time }}
       </div>
 
-      {% if eventDescription %}
-
+      {% if event.description %}
         <a class="pull-left">
-          <embed src="/static/img/question.svg"
+          <embed src="/static/img/what.svg"
             width="65"
             height="65"
             class='svg_pic'
@@ -96,7 +96,6 @@
           <h4 class="media-heading">What?</h4><br>
           <span id="description">{{ event.description }}</span>
         </div>
-
       {% endif %}
 
       <div class='bottle_div'>
@@ -111,16 +110,15 @@
 
         <div class="well">
           <h4 class="media-heading">I can bring...</h4>
-          <span id="dishes_for_seeing"></span>
+          <span id="dishesToBring">
+          {% for dish in dishesToBring %}
+            <p>{{ dish }}</p>
+          {% endfor %}
+          </span>
         </div>
       </div>
 
-      <p id="dishes_for_listing">
-        {{ event.dishesToBring }}
-      </p>
-
       {% if acceptCash %}
-
         <a class="pull-left">
           <embed
             src="/static/img/money.svg"
@@ -135,8 +133,8 @@
           <h4 class="media-heading" >How much? <small>(Suggested)</small></h4>
           {{ event.cashAmount }}
         </div>
-
       {% endif %}
+
     </div>
 
     <div class="col-md-4">
@@ -152,30 +150,23 @@
 
       <div id="guests_coming">
         <h4> Attendees: </h4>
+        {% if numGuests %}
+          <h4> ({{ num_guests }} of {{ event.numGuests }}) </h4>
+        {% else %}
+          <h4> {{ num_guests }} </h4>
+        {% endif %}
       </div>
 
       <div>
-        <a id="add_guest">Get me on this list!</a>
+        <button class="btn btn-block" id="add_guest" onclick="onAddGuestClick()">
+          Get me on this list!
+        </button>
       </div>
-      <div id="attendees"></div>
-
-      <p id="attending_names">
-        {{ event.guests_names }}
-      </p>
-
-      <p id="number_of_attendees">
-        {{ event.numGuests }}
-
-      </p>
-
-      <p id="attending_with_cash">
-        {{ event.guests_cash }}
-
-      </p>
-
-      <p id="attending_dishes">
-        {{ event.guests_dishes }}
-      </p>
+      <div id="attendees">
+        {% for guest in guests %}
+          {{ guest }}
+        {% endfor %}
+      </div>
     </div>
 
     <div class="col-md-4">
@@ -185,4 +176,5 @@
 {% endblock %}
 
 {% block scripts %}
+  <script src="/static/js/event.js"></script>
 {% endblock %}

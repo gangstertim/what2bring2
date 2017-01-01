@@ -1,9 +1,9 @@
 function onSubmit() {
   var formData = {};
   var errors = [];
-  var fields = ['eventName', 'eventDate', 'eventTime', 
-    'eventLocation', 'eventDescription', 'hostName', 
-    'hostEmail', 'guestNames', 'guestEmails',
+  var fields = ['eventName', 'eventDate', 'eventTime',
+    'eventLocation', 'eventDescription', 'hostName',
+    'hostEmail', 'guestEmails',
     'dishesToBring', 'acceptCash', 'cashAmount'
   ];
 

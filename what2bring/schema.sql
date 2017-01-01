@@ -10,6 +10,7 @@ create table events (
   hostName text not null,
   hostEmail text not null,
   dishesToBring text,
+  numGuests integer,
   dishesBeingBrought text,
   acceptCash integer not null,
   cashAmount integer,
