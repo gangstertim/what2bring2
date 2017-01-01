@@ -20,85 +20,100 @@
   <h1>What2Bring</h1>
   <p>You already know when it's happenening.  Now, it's only a question of who's coming and what they're bringing.</p>
   <h3>Let's get started:</h3>
-  <form class="form">
-    <input class="form-control" type="string" id="eventName" placeholder="Name Your Event">
-  </form>
+  <input class="form-control" type="string" id="eventName" placeholder="Name Your Event">
 {% endblock %}
 
 {% block body %}
-  <div class="col-md-4">
-    <h2>Where & When?</h2>
-    <form class="form-horizontal">
+  <form id="event-creation-form" action="/events" method="post">
+    <!-- Fill in with JS -->
+    <input id="_eventName" name="name" hidden>
+
+    <div class="col-md-4">
+      <h2>Where & When?</h2>
+
       <div class="form-group">
         <label for="eventDate">Event Date</label>
-        <input class="form-control" class="form-control" type="date" id="eventDate" placeholder="Date">
+        <input class="form-control" id="eventDate"
+          name="date" type="date"  placeholder="Date">
       </div>
 
       <div class="form-group">
         <label for="eventTime">Event Time</label>
-        <input class="form-control" type="string" id="eventTime" placeholder="Time">
+        <input class="form-control" id="eventTime"
+          name="time" type="string" placeholder="Time">
       </div>
 
       <div class="form-group">
         <label for="eventLocation">Event Location</label>
-        <input class="form-control" type="string" id="eventLocation" placeholder="Location">
+        <input class="form-control" id="eventLocation"
+          name="location" type="string" placeholder="Location">
       </div>
 
       <div class="form-group">
         <label for="eventDescription">Event Description (optional)</label>
-        <input class="form-control" type="text" id="eventDescription" placeholder="Description">
+        <input class="form-control" id="eventDescription"
+          name="description" type="text" placeholder="Description">
       </div>
-    </form>
-  </div>
 
-  <div class="col-md-4">
-    <h2>Who?</h2>
-    <form class="form-horizontal">
+    </div>
+
+    <div class="col-md-4">
+      <h2>Who?</h2>
+
       <div class="form-group">
         <label for="hostName">Who Are You?</label>
-        <input class="form-control" type="string" id="hostName" placeholder="Name">
+        <input class="form-control" id="hostName"
+          name="hostName" type="string" placeholder="Name">
       </div>
 
       <div class="form-group">
-        <label for="hostEmail">Your Email (optional):</label>
-        <input class="form-control" type="email" id="hostEmail" placeholder="Email">
+        <label for="hostEmail">Your Email (optional)</label>
+        <input class="form-control" id="hostEmail"
+          name="hostEmail" type="email" placeholder="Email">
       </div>
 
       <div class="form-group">
         <label for="guestNames">How many guests can you host?</label>
-        <input class="form-control" type="number" id="numGuests" placeholder="">
+        <input class="form-control" id="numGuests"
+          name="guestNames" type="number" placeholder="">
       </div>
 
       <div class="form-group">
         <label for="guestEmails">Guest Emails (optional):</label>
-        <input class="form-control" type="text" id="guestEmails" placeholder="Emails">
+        <input class="form-control" id="guestEmails"
+          name="guestEmails" type="text" placeholder="Emails">
       </div>
-    </form>
-  </div>
 
-  <div class="col-md-4">
-    <h2>What?</h2>
-    <form class="form-horizontal">
+    </div>
+
+    <div class="col-md-4">
+      <h2>What?</h2>
 
       <div class="form-group">
         <label for="dishesToBring">What should guests bring?  Separate dishes with commas.</label>
-        <input class="form-control" type="text" id="dishesToBring" placeholder="What to bring?">
+        <input class="form-control" id="dishesToBring"
+          name="dishesToBring" type="text" placeholder="What to bring?">
       </div>
 
       <div class="form-group">
-        <input type="checkbox" id="acceptCash">
         <label for="acceptCash">Can guests pay with cash?</label>
+        <input type="hidden" name="acceptCash">
+        <input class="form-control" id="acceptCash" name="acceptCash" type="checkbox">
       </div>
 
       <div class="form-group">
         <label for="cashAmount">How Much?</label>
-        <input class="form-control" type="number" id="cashAmount">
+        <input class="form-control" id="cashAmount"
+          name="cashAmount" type="number">
       </div>
-    </form>
-  </div>
 
+    </div>
+
+  </form>
   <p>
-    <button class="btn fullwidth btn-primary" type="button" onclick="onSubmit()">Let's Do it!</button>
+    <button id="submit" class="btn fullwidth btn-primary" type="submit">
+      Let's Do it!
+    </button>
   </p>
 {% endblock %}
 

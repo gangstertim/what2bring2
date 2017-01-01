@@ -1,4 +1,4 @@
 function onAddGuestClick() {
-  $('#add_guest').hide();
-  $('#add_guest_well').show();
+  $('#add-guest').hide();
+  $('#rsvp-well').show();
 }

@@ -39,6 +39,11 @@
     padding: 12px;
   }
 
+  .btn.fullwidth {
+    width: 100%;
+    margin-top: 22px;
+  }
+
 {% endblock %}
 
 {% block hero %}
@@ -88,7 +93,7 @@
           <embed src="/static/img/what.svg"
             width="65"
             height="65"
-            class='svg_pic'
+            class='svg-pic'
           />
         </a>
 
@@ -98,13 +103,13 @@
         </div>
       {% endif %}
 
-      <div class='bottle_div'>
+      <div class='bottle-div'>
         <a class="pull-left">
           <embed
             src="/static/img/wine.svg"
             width="75"
             height="80"
-            type="image/svg+xml"class='svg_pic'
+            type="image/svg+xml"class='svg-pic'
           />
         </a>
 
@@ -125,7 +130,7 @@
             width="65"
             height="60"
             type="image/svg+xml"
-            class='svg_pic'
+            class='svg-pic'
           />
         </a>
 
@@ -144,21 +149,21 @@
           width="55"
           height="60"
           type="image/svg+xml"
-          class='svg_pic'
+          class='svg-pic'
         />
       </a>
 
-      <div id="guests_coming">
+      <div id="guests-coming">
         <h4> Attendees: </h4>
         {% if numGuests %}
-          <h4> ({{ num_guests }} of {{ event.numGuests }}) </h4>
+          <h4> ({{ numGuests }} of {{ event.numGuests }}) </h4>
         {% else %}
-          <h4> {{ num_guests }} </h4>
+          <h4> {{ numGuests }} </h4>
         {% endif %}
       </div>
 
       <div>
-        <button class="btn btn-block" id="add_guest" onclick="onAddGuestClick()">
+        <button class="btn btn-block" id="add-guest" onclick="onAddGuestClick()">
           Get me on this list!
         </button>
       </div>
@@ -169,8 +174,19 @@
       </div>
     </div>
 
-    <div class="col-md-4">
-      <p id='rsvp'></p>
+    <div class="col-md-4" hidden id="rsvp-well">
+      <div class="well">
+        <div class="form-group">
+          <label for="eventDate">Who are you?</label>
+          <input class="form-control" class="form-control" id="guestName" placeholder="The Cheshire Cat">
+        </div>
+        <div class="form-group">
+          <label for="eventDate">Your Email (Optional)</label>
+          <input class="form-control" class="form-control" type="email" id="guestEmail" placeholder="BigSmiles@yahoo.com">
+        </div>
+        <button class="btn fullwidth">I'll bring something</button>
+        <button class="btn btn-primary fullwidth">RSVP</button>
+      </div>
     </div>
   </div>
 {% endblock %}
