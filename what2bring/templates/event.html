@@ -36,11 +36,28 @@
   }
 
   .pull-left {
-    padding: 12px;
+    padding: 11px;
   }
 
   .btn.fullwidth {
     width: 100%;
+    margin-top: 22px;
+  }
+
+  .inline {
+    display: inline;
+    width: 33px;
+  }
+
+  #attendees {
+    margin-top: 33px;
+  }
+
+  #unclaimedDishes {
+    display: inline-block;
+  }
+
+  #dishes-container {
     margin-top: 22px;
   }
 
@@ -114,9 +131,9 @@
         </a>
 
         <div class="well">
-          <h4 class="media-heading">I can bring...</h4>
-          <span id="dishesToBring">
-          {% for dish in dishesToBring %}
+          <h4 class="media-heading">We still need...</h4>
+          <span id="unclaimedDishes">
+          {% for dish in unclaimedDishes %}
             <p>{{ dish }}</p>
           {% endfor %}
           </span>
@@ -182,7 +199,8 @@
 
 
     <div class="col-md-4" id="rsvp-well" hidden>
-      <form class="well" action={{ guestCreationEndpoint }} method="post">
+      <form class="well" id="guest-creation-form"
+        action={{ guestCreationEndpoint }} method="post">
         <div class="form-group">
           <label for="eventDate">Who are you?</label>
           <input class="form-control" id="guestName"
@@ -194,12 +212,22 @@
             name="email" type="email" placeholder="BigSmiles@yahoo.com">
         </div>
 
-        <button class="btn fullwidth">I'll bring something</button>
+        <button class="btn fullwidth" id="bring-button">
+          I'll bring something
+        </button>
 
-        <input class="form-control" name="dishes" type="hidden" value="">
-        <input class="form-control" name="bringing_cash" value="" type="hidden">
+        <div id="dishes-container" hidden>
+          {% for dish in unclaimedDishes %}
+            <div>
+              <input class="inline dish" data-dish={{ dish }} type="checkbox">
+              <span>{{ dish }}</span>
+            </div>
+          {% endfor %}
+          <input id="_dishes" name="dishes" type="hidden">
+          <input id="_bringing-cash" name="bringing_cash" type="hidden">
+        </div>
 
-        <button class="btn btn-primary fullwidth">RSVP</button>
+        <button class="btn btn-primary fullwidth" id="submit">RSVP</button>
       </div>
     </form >
   </div>
