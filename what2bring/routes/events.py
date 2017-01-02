@@ -2,25 +2,28 @@ from flask import render_template, redirect, request, url_for, flash
 from ..helpers import get_db
 from . import routes
 
-@routes.route('/events/<int:event_no>/guest', methods=['POST'])
-def create_guest(event_no):
+@routes.route('/events/<int:id>/guest', methods=['POST'])
+def create_guest(id):
     db = get_db()
     db.execute("""insert into guests (
         name,
         email,
         dishes,
         bringing_cash,
-        event_id
-    ) values (?, ?, ?, ?, ?)""", [
+        event_id,
+        created_at
+    ) values (?, ?, ?, ?, ?, ?)""", [
         request.form['name'],
         request.form['email'],
         request.form['dishes'],
         request.form['bringing_cash'],
-        request.form['event_id']
+        id,
+        "DATETIME('now')"
     ])
+    db.commit()
+    flash("Guest successfully added!")
     #TODO also need to update events DB with dishes
-    return True #TODO idk, should proably just return a 200? or newly templated page?
-
+    return redirect(url_for('routes.show_event', id=id))
 
 @routes.route('/events/<int:id>')
 def show_event(id):
@@ -36,7 +39,8 @@ def show_event(id):
     return render_template('event.html', 
         event=event,
         dishesToBring=dishesToBring, 
-        guests=guests, 
+        guests=guests,
+        guestCreationEndpoint="/events/" + str(id) + "/guest", #idk maybe this can be done in html directly
         numGuests=len(guests)
     )
 
@@ -55,7 +59,6 @@ def list_events():
 
 
 def create_event(form):
-    import pdb; pdb.set_trace()
     db = get_db()
     eventDatetime = 0 #TODO convert event date & time into epoch datetime
     acceptCash = 1 if form['acceptCash'] else 0

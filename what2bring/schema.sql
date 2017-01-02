@@ -24,8 +24,7 @@ create table guests (
   dishes text,
   bringing_cash integer,
   event_id integer not null,
-  created_at datetime not null,
-  updated_at datetime not null
+  created_at datetime not null
 );
 
 CREATE UNIQUE INDEX event_id
